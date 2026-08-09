@@ -6,22 +6,21 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "oh-my-posh";
-  version = "29.35.2";
+  version = "30.4.0";
 
   src = fetchFromGitHub {
     owner = "jandedobbeleer";
     repo = "oh-my-posh";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-/LKJNYR9cmZ7QwC4uVWHUSg10dbk9J846JCWaedYoto=";
+    hash = "sha256-pEprhxE8qqCT001DXC/OQmfSHX2mSw4oHpe5/C2cxhg=";
   };
 
-  vendorHash = "sha256-BRJvQwLeqXS30d5ZRSpc1as7DxMDq6ob4VgbP60Y94Q=";
+  vendorHash = "sha256-7LLRPE0aYI+hG0AOL7PARzwDpHto56c68ddQDapGKSM=";
 
   sourceRoot = "${finalAttrs.src.name}/src";
 
   ldflags = [
     "-s"
-    "-w"
     "-X github.com/jandedobbeleer/oh-my-posh/src/build.Version=${finalAttrs.version}"
     "-X github.com/jandedobbeleer/oh-my-posh/src/build.Date=1970-01-01T00:00:00Z"
   ];
@@ -34,7 +33,7 @@ buildGoModule (finalAttrs: {
 
   postPatch = ''
     # these tests requires internet access
-    rm cli/image/image_test.go config/migrate_glyphs_test.go cli/upgrade/notice_test.go segments/upgrade_test.go
+    rm config/migrate_glyphs_test.go cli/upgrade/notice_test.go segments/upgrade_test.go
   '';
 
   postInstall = ''
