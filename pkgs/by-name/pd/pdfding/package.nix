@@ -52,7 +52,7 @@ python.pkgs.buildPythonPackage (finalAttrs: {
       ruamel-yaml
       whitenoise
 
-      # dependecies required for django collectstatic
+      # dependencies required for django collectstatic
       cryptography
       pyjwt
       requests
@@ -140,6 +140,7 @@ python.pkgs.buildPythonPackage (finalAttrs: {
     "huey"
     "nh3"
     "psycopg2-binary"
+    "pypdf"
     "pypdfium2"
   ];
 

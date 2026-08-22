@@ -203,6 +203,11 @@ lib.mapAttrs mkLicense (
       fullName = " BitTorrent Open Source License v1.1";
     };
 
+    blessing = {
+      spdxId = "blessing";
+      fullName = "SQLite Blessing";
+    };
+
     boehmGC = {
       spdxId = "Boehm-GC";
       fullName = "Boehm-Demers-Weiser GC License";
@@ -1046,7 +1051,7 @@ lib.mapAttrs mkLicense (
 
     llgplPreamble = {
       spdxId = "LLGPL";
-      fullName = "LLGPL Preamble";
+      fullName = "LLGPL Preamble"; # Only used together with LGPL (clarifying C-centric terms of LGPL in context of Lisp), SPDX tracks it separately
     };
 
     llvm-exception = {
@@ -1277,6 +1282,11 @@ lib.mapAttrs mkLicense (
     odbl = {
       spdxId = "ODbL-1.0";
       fullName = "Open Data Commons Open Database License v1.0";
+    };
+
+    ofl10 = {
+      spdxId = "OFL-1.0";
+      fullName = "SIL Open Font License 1.0";
     };
 
     ofl = {
@@ -1615,6 +1625,13 @@ lib.mapAttrs mkLicense (
     upl = {
       spdxId = "UPL-1.0";
       fullName = "Universal Permissive License";
+    };
+
+    valveSDK = {
+      fullName = "Valve Corporation Steamworks SDK Access Agreement";
+      url = "https://partner.steamgames.com/documentation/sdk_access_agreement";
+      free = false;
+      redistributable = true;
     };
 
     vim = {

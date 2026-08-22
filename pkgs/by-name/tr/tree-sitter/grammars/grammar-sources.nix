@@ -2556,9 +2556,9 @@
   };
 
   sshclientconfig = rec {
-    version = "2026.7.30";
+    version = "2026.8.13";
     url = "github:metio/tree-sitter-ssh-client-config?ref=${version}";
-    hash = "sha256-pZcEtZ9PBpydW4iVLPmnYCgLyEsi/UqRs7Szc6oEwio=";
+    hash = "sha256-a4tkU01oJ7x9rfVJRB3F9y8O3gmCVy0gLV6RieTrLLc=";
     meta = {
       license = lib.licenses.cc0;
       maintainers = with lib.maintainers; [
@@ -2951,6 +2951,18 @@
       license = lib.licenses.lgpl21Only;
       maintainers = with lib.maintainers; [
         aciceri
+      ];
+    };
+  };
+
+  vcl = rec {
+    version = "0.4.0";
+    url = "github:ntsk/tree-sitter-vcl?ref=v${version}";
+    hash = "sha256-qV+Ww5pzUHxmv9R6zIJDcLZnHLHL6xi3EZoRlhzgISQ=";
+    meta = {
+      license = lib.licenses.mit;
+      maintainers = with lib.maintainers; [
+        ntsk
       ];
     };
   };
