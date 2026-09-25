@@ -2,21 +2,27 @@
   lib,
   rustPlatform,
   fetchFromGitHub,
+  versionCheckHook,
   nix-update-script,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "llmfit";
-  version = "1.1.9";
+  version = "1.1.10";
+
+  __structuredAttrs = true;
 
   src = fetchFromGitHub {
     owner = "AlexsJones";
     repo = "llmfit";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-DCJ6TtPza/pA8cbYiVBiK2iyOB2gwSIZsJuL2GeB810=";
+    hash = "sha256-i7eYn7g664dDtaBAeh9Y8yIDLy6tWPKXIWDrD4Drajg=";
   };
 
-  cargoHash = "sha256-sKfG6kiqkCZ5vlG71cjR7aMNBGe7RoZCiQogYDywMC4=";
+  cargoHash = "sha256-1lK/zNcSei/DRInfl2I3EanmuXk0LqRVyFF7G3bJPXU=";
+
+  nativeInstallCheckInputs = [ versionCheckHook ];
+  doInstallCheck = true;
 
   passthru.updateScript = nix-update-script { };
 

@@ -11,14 +11,14 @@
 
 buildPythonPackage (finalAttrs: {
   pname = "garminconnect";
-  version = "0.3.11";
+  version = "0.3.15";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "cyberjunky";
     repo = "python-garminconnect";
     tag = finalAttrs.version;
-    hash = "sha256-UFVhdk4xxdmuED+lfEFGu4jNnd4BC5WyWaktDbdtmP0=";
+    hash = "sha256-5kiBEgBI/eXoRhPv/F73EQm4bPsZeRHjlaWzWtpXpIQ=";
   };
 
   pythonRelaxDeps = [ "garth" ];

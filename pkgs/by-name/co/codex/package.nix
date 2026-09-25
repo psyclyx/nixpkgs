@@ -29,18 +29,18 @@
 }:
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "codex";
-  version = "0.149.0";
+  version = "0.156.1";
 
   src = fetchFromGitHub {
     owner = "openai";
     repo = "codex";
     tag = "rust-v${finalAttrs.version}";
-    hash = "sha256-SMVTW/CcGz4xxyeFe3KUf3Ns6jp+2SRMTvtA2o2+y7Q=";
+    hash = "sha256-H53f57hmnyCtn5yPxtBe/A92qyQyzQBeU/vK2qSBrvI=";
   };
 
   sourceRoot = "${finalAttrs.src.name}/codex-rs";
 
-  cargoHash = "sha256-K58PL588Hhk75FyXgU6b8IEAco8FIz8oGd1S0WgOjyQ=";
+  cargoHash = "sha256-W87rX/W2J1pwqNrihX+Rj6DfagoZYuB6C+l/S4BhyJM=";
 
   __structuredAttrs = true;
 
@@ -63,6 +63,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
     substituteInPlace Cargo.toml \
       --replace-fail 'lto = "thin"' "" \
       --replace-fail 'codegen-units = 4' ""
+
+    sed -i '1i#![recursion_limit = "256"]' chatgpt/src/lib.rs
   '';
 
   nativeBuildInputs = [

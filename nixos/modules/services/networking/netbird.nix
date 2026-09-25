@@ -339,7 +339,7 @@ in
                         mkdir -p "$out/share/applications"
                         substitute ${cfg.ui.package}/share/applications/netbird.desktop \
                             "$out/share/applications/${mkBin "netbird"}.desktop" \
-                          --replace-fail 'Name=Netbird' "Name=NetBird @ ${client.service.name}" \
+                          --replace-fail 'Name=NetBird' "Name=NetBird @ ${client.service.name}" \
                           --replace-fail 'Icon=netbird' "Icon=${cfg.ui.package}/share/icons/hicolor/256x256/apps/netbird.png" \
                           --replace-fail 'netbird-ui' "${mkBin "netbird-ui"}"
                       '')
@@ -501,6 +501,13 @@ in
       };
     })
     {
+      assertions = lib.optionals (cfg.clients != { }) [
+        {
+          assertion = !(config.networking.nftables.enable && config.networking.nftables.flushRuleset);
+          message = "networking.nftables.flushRuleset is enabled, which will flush the nftables tables installed by services.netbird.clients. Flushing these tables will break netbird functionality including DNS resolution and network routing.";
+        }
+      ];
+
       boot.extraModulePackages = optional (
         cfg.clients != { } && (versionOlder kernel.version "5.6")
       ) kernelPackages.wireguard;

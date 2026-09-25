@@ -1,7 +1,7 @@
 {
   buildNpmPackage,
   copyDesktopItems,
-  electron_41,
+  electron_43,
   fetchFromGitHub,
   lib,
   makeDesktopItem,
@@ -15,20 +15,20 @@
   cargo,
 }:
 let
-  electron = electron_41;
+  electron = electron_43;
   nodejs = nodejs_22;
 in
-buildNpmPackage rec {
+buildNpmPackage (finalAttrs: {
   pname = "super-productivity";
-  version = "18.19.0";
+  version = "19.0.1";
 
   inherit nodejs;
 
   src = fetchFromGitHub {
     owner = "super-productivity";
     repo = "super-productivity";
-    tag = "v${version}";
-    hash = "sha256-tUK2vytQ/fBSw8drjBLh4HlrnQh/0tX9e9otYMhXYsA=";
+    tag = "v${finalAttrs.version}";
+    hash = "sha256-42Q+nv2zgS5dCS4hlDNqvU//hEgmFOgDLv2covy2P74=";
   };
 
   # Use custom fetcher for deps because super-productivity uses multiple
@@ -38,7 +38,7 @@ buildNpmPackage rec {
   npmDeps = stdenv.mkDerivation (
     lib.fetchers.normalizeHash { } {
       pname = "super-productivity-deps";
-      inherit version src;
+      inherit (finalAttrs) version src;
 
       nativeBuildInputs = [
         prefetch-npm-deps
@@ -74,7 +74,7 @@ buildNpmPackage rec {
       dontInstall = true;
 
       outputHashMode = "recursive";
-      hash = "sha256-Je3pHgkBwt35sIvxQqnYX3F+uJQeBGc5kzCAL9czCYs=";
+      hash = "sha256-ApSPWa9t/xWM7oqbgmUI9mHrS+TyCoBP2sxCJLGFe7s=";
     }
   );
 
@@ -83,7 +83,7 @@ buildNpmPackage rec {
 
   cargoRoot = "electron/wayland-idle-helper";
   cargoDeps = rustPlatform.fetchCargoVendor {
-    inherit
+    inherit (finalAttrs)
       pname
       version
       src
@@ -211,4 +211,4 @@ buildNpmPackage rec {
     ];
     mainProgram = "superproductivity";
   };
-}
+})

@@ -15,7 +15,7 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "hk";
-  version = "1.56.0";
+  version = "1.58.1";
 
   __structuredAttrs = true;
 
@@ -23,10 +23,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
     owner = "jdx";
     repo = "hk";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-c1SINPa38YpE0R4/9NtrMWbyMBh7sGpdPiF9EYFrPcw=";
+    hash = "sha256-XSZy4dbKPDRkGc8BrVCz8H0STb64uJEoJBQ5lwiwsv4=";
   };
 
-  cargoHash = "sha256-LzOtuU+GoV6gVijaH8HxpNaMlnPJEXjnHLRYADFxUgA=";
+  cargoHash = "sha256-WQ/ICFoRuZBEXGaLbScnwBv4s6AhdtgoUSxoYwmQT0c=";
 
   nativeBuildInputs = [
     installShellFiles

@@ -9,16 +9,16 @@
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "mprisence";
-  version = "1.8.2";
+  version = "1.8.5";
 
   src = fetchFromGitHub {
     owner = "lazykern";
     repo = "mprisence";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-m3rmyE9sta8t2Xr3OQL85luPC2gnzCtA9hJ84dzqSVM=";
+    hash = "sha256-GiRhhJv6CHRWaTNdMLkEbldZJcL9ol849JwCky64H/s=";
   };
 
-  cargoHash = "sha256-BWsnQRKYjcJF3xojV73DCo2b99eLpuOuQHi4qZWmsnU=";
+  cargoHash = "sha256-maEBwe14jMy608fs9yJ4T9Z0xvYgGWDrMnPaSic4PCs=";
 
   nativeBuildInputs = [ pkg-config ];
 
